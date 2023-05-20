@@ -163,7 +163,7 @@ describe("Field", () => {
         )}
       </Form>,
     );
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0].meta.active).toBe(false);
     expect(spy.mock.calls[0][0].input.value).toBe("");
     fireEvent.focus(getByTestId("name"));
@@ -358,7 +358,7 @@ describe("Field", () => {
       </Form>,
     );
     expect(spy).toHaveBeenCalled();
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0].input.value).toBeUndefined();
     fireEvent.change(getByTestId("name"), { target: { value: "erikras" } });
     expect(spy).toHaveBeenCalledTimes(2);
@@ -401,7 +401,7 @@ describe("Field", () => {
     );
 
     expect(CustomSelect).toHaveBeenCalled();
-    expect(CustomSelect).toHaveBeenCalledTimes(1);
+    expect(CustomSelect).toHaveBeenCalledTimes(2);
     expect(CustomSelect.mock.calls[0][0].input.multiple).toBe(true);
   });
 
@@ -434,7 +434,7 @@ describe("Field", () => {
     );
 
     expect(MyInput).toHaveBeenCalled();
-    expect(MyInput).toHaveBeenCalledTimes(1);
+    expect(MyInput).toHaveBeenCalledTimes(2);
     expect(MyInput.mock.calls[0][0].input).not.toHaveProperty("type");
   });
 
@@ -462,7 +462,7 @@ describe("Field", () => {
       </Form>,
     );
     expect(spy).toHaveBeenCalled();
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0].input.value).toBe(null);
     fireEvent.change(getByTestId("name"), { target: { value: "erikras" } });
     expect(spy).toHaveBeenCalledTimes(2);
@@ -498,7 +498,7 @@ describe("Field", () => {
       </Form>,
     );
     expect(spy).toHaveBeenCalled();
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0].input.value).toBe("");
     fireEvent.change(getByTestId("name"), { target: { value: "erikras" } });
     expect(spy).toHaveBeenCalledTimes(2);
@@ -526,7 +526,7 @@ describe("Field", () => {
       </Form>,
     );
     expect(spy).toHaveBeenCalled();
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0].validate).toBeUndefined();
   });
 
@@ -546,7 +546,7 @@ describe("Field", () => {
       </Form>,
     );
     expect(spy).toHaveBeenCalled();
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0].subscription).toBeUndefined();
   });
 

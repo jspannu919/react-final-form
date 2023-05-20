@@ -90,8 +90,6 @@ function useField<FormValues: FormValuesShape>(
       validateFields,
     });
 
-  const firstRender = React.useRef(true);
-
   // synchronously register and unregister to query field state for our subscription on first render
   const [state, setState] = React.useState<FieldState>((): FieldState => {
     let initialState: FieldState = {};
@@ -112,11 +110,9 @@ function useField<FormValues: FormValuesShape>(
 
   React.useEffect(
     () =>
-      register((state) => {
-        if (firstRender.current) {
-          firstRender.current = false;
-        } else {
-          setState(state);
+      register((newState) => {
+        if (state != newState) {
+          setState(newState);
         }
       }, false),
     // eslint-disable-next-line react-hooks/exhaustive-deps

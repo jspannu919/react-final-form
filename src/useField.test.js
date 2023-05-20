@@ -74,6 +74,48 @@ describe("useField", () => {
     );
   });
 
+  it("should listen to initial value", () => {
+    const MyFieldListener = () => {
+      const { input, meta } = useField("name");
+      expect(meta.initial).toBe("test");
+      expect(input.value).toBe("test");
+      return null;
+    };
+    render(
+      <Form onSubmit={onSubmitMock}>
+        {() => (
+          <form>
+            <Field name="name" component="input" data-testid="name" initialValue="test"/>
+            <MyFieldListener />
+          </form>
+        )}
+      </Form>,
+    );
+  });
+
+  it("should listen to initial value 2", () => {
+    const MyFieldListener = () => {
+      const isFirstRender = React.useRef(true)
+      const { input, meta } = useField("name");
+      if(!isFirstRender.current){
+        expect(meta.initial).toBe("test");
+        // expect(input.value).toBe("test");
+      }
+      isFirstRender.current = false
+      return null;
+    };
+    render(
+      <Form onSubmit={onSubmitMock}>
+        {() => (
+          <form>
+            <MyFieldListener />
+            <Field name="name" component="input" data-testid="name" initialValue="test"/>
+          </form>
+        )}
+      </Form>,
+    );
+  });
+
   it("should track field state", () => {
     const spy = jest.fn();
     const MyFieldListener = () => {
